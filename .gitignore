@@ -22,6 +22,8 @@ coverage/
 dist/
 .ruff_cache/
 .tmp/
+__pycache__/
+*.pyc
 
 # Secrets
 .env
