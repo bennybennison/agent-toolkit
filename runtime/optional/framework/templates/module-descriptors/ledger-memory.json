@@ -1,0 +1,15 @@
+{
+  "module_id": "ledger.memory",
+  "layer": "foundation",
+  "version": "1.0.0",
+  "provides": ["ledger.store.v1"],
+  "depends_on": [],
+  "config_schema_version": 1,
+  "feature_flags": ["ledger.adapter.in-memory"],
+  "lifecycle_hooks": ["init", "healthcheck", "shutdown"],
+  "health_contract": {
+    "required_checks": ["volatile_store_available"],
+    "severity": "warn"
+  },
+  "replacement_policy": "hot-swap"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "agents-utility",
+  "name": "Hidden Specialists — Utility",
+  "version": "1.0.0",
+  "category": "agents",
+  "provides": [
+    "agent.cleanup",
+    "agent.tdd-runner",
+    "agent.architect"
+  ],
+  "requires": [],
+  "profiles": ["standard", "full"],
+  "hostVisibility": "hidden",
+  "content": {
+    "agents": ["*.md"]
+  }
+}

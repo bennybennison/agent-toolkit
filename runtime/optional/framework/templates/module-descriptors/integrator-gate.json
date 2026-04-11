@@ -1,0 +1,15 @@
+{
+  "module_id": "integrator.gate",
+  "layer": "specialist",
+  "version": "1.0.0",
+  "provides": ["integrator.guard.v1"],
+  "depends_on": ["integrator.bridge.v1", "shadow.workspace.v1"],
+  "config_schema_version": 1,
+  "feature_flags": ["hook.integrator-gate"],
+  "lifecycle_hooks": ["init", "healthcheck", "shutdown"],
+  "health_contract": {
+    "required_checks": ["mission_state_readable", "shadow_mode_guard_active"],
+    "severity": "error"
+  },
+  "replacement_policy": "restart-required"
+}

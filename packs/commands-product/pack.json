@@ -1,0 +1,15 @@
+{
+  "id": "commands-product",
+  "name": "Product Design Modes",
+  "version": "1.0.0",
+  "category": "commands",
+  "provides": [
+    "command.outside-in",
+    "command.ui-first"
+  ],
+  "requires": ["skill.outside-in-mode", "skill.ui-first-mode"],
+  "profiles": ["standard", "full"],
+  "content": {
+    "commands": ["*.md"]
+  }
+}

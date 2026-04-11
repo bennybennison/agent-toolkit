@@ -1,0 +1,22 @@
+{
+  "id": "rules-common",
+  "name": "Common Rules",
+  "version": "1.0.0",
+  "category": "rules",
+  "provides": [
+    "rule.documentation",
+    "rule.execution-discipline",
+    "rule.file-size-caps",
+    "rule.git-workflow",
+    "rule.mcp-servers",
+    "rule.modular-code",
+    "rule.monorepo-governance",
+    "rule.profiles",
+    "rule.security"
+  ],
+  "requires": [],
+  "always": true,
+  "content": {
+    "instructions": ["*.md"]
+  }
+}

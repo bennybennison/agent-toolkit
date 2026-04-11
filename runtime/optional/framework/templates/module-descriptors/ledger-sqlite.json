@@ -1,0 +1,15 @@
+{
+  "module_id": "ledger.sqlite",
+  "layer": "foundation",
+  "version": "1.0.0",
+  "provides": ["ledger.store.v1"],
+  "depends_on": [],
+  "config_schema_version": 1,
+  "feature_flags": [],
+  "lifecycle_hooks": ["init", "healthcheck", "shutdown"],
+  "health_contract": {
+    "required_checks": ["db_accessible", "append_only_enforced"],
+    "severity": "error"
+  },
+  "replacement_policy": "restart-required"
+}

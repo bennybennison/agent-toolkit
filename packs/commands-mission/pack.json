@@ -1,0 +1,16 @@
+{
+  "id": "commands-mission",
+  "name": "Mission Commands",
+  "version": "1.0.0",
+  "category": "commands",
+  "provides": [
+    "command.mission",
+    "command.loop",
+    "command.orchestrate"
+  ],
+  "requires": ["agent.mapper", "agent.builder", "agent.auditor", "agent.verifier"],
+  "profiles": ["standard", "full"],
+  "content": {
+    "commands": ["*.md"]
+  }
+}

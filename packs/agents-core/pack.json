@@ -1,0 +1,18 @@
+{
+  "id": "agents-core",
+  "name": "Hidden Specialists — Core",
+  "version": "1.0.0",
+  "category": "agents",
+  "provides": [
+    "agent.audit-planner",
+    "agent.code-reviewer",
+    "agent.researcher",
+    "agent.build-fixer"
+  ],
+  "requires": [],
+  "always": true,
+  "hostVisibility": "hidden",
+  "content": {
+    "agents": ["*.md"]
+  }
+}

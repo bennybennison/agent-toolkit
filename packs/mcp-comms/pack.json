@@ -1,0 +1,11 @@
+{
+  "id": "mcp-comms",
+  "name": "Communications MCP Servers",
+  "version": "1.0.0",
+  "category": "mcp",
+  "provides": ["mcp.email", "mcp.slack"],
+  "requires": [],
+  "content": {
+    "mcp": ["servers.json"]
+  }
+}

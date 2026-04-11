@@ -1,0 +1,18 @@
+{
+  "id": "commands-observability",
+  "name": "Observability Commands",
+  "version": "1.0.0",
+  "category": "commands",
+  "provides": [
+    "command.optimise",
+    "command.optimise-compare",
+    "command.session-audit",
+    "command.review-framework",
+    "command.ledger"
+  ],
+  "requires": [],
+  "profiles": ["standard", "full"],
+  "content": {
+    "commands": ["*.md"]
+  }
+}

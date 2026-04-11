@@ -1,0 +1,15 @@
+{
+  "module_id": "escalation.engine.default",
+  "layer": "command",
+  "version": "1.0.0",
+  "provides": ["escalation.engine.v1"],
+  "depends_on": ["confidence.auditor.v1"],
+  "config_schema_version": 1,
+  "feature_flags": [],
+  "lifecycle_hooks": ["init", "healthcheck"],
+  "health_contract": {
+    "required_checks": ["threshold_in_range"],
+    "severity": "error"
+  },
+  "replacement_policy": "hot-swap"
+}

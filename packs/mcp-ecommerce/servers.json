@@ -1,0 +1,28 @@
+{
+  "category": "ecommerce",
+  "description": "eCommerce channels — Shopify, WooCommerce",
+  "note": "No official MCP servers exist for eCommerce platforms. These are the best community alternatives. Amazon FBA/Vendor, Etsy, and Galaxus do not have viable MCP servers yet.",
+  "servers": {
+    "shopify": {
+      "type": "local",
+      "command": ["npx", "shopify-mcp"],
+      "environment": {
+        "SHOPIFY_STORE_URL": "{env:SHOPIFY_STORE_URL}",
+        "SHOPIFY_ACCESS_TOKEN": "{env:SHOPIFY_ACCESS_TOKEN}"
+      },
+      "enabled": false,
+      "note": "Community (GeLi2001/shopify-mcp, 866 stars). Requires Shopify store URL + access token."
+    },
+    "woocommerce": {
+      "type": "local",
+      "command": ["npx", "woocommerce-mcp-server"],
+      "environment": {
+        "WC_CONSUMER_KEY": "{env:WC_CONSUMER_KEY}",
+        "WC_CONSUMER_SECRET": "{env:WC_CONSUMER_SECRET}",
+        "WC_STORE_URL": "{env:WC_STORE_URL}"
+      },
+      "enabled": false,
+      "note": "Community (techspawn, 83 stars). Requires WooCommerce REST API keys."
+    }
+  }
+}

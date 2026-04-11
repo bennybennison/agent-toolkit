@@ -1,0 +1,14 @@
+{
+  "id": "verify-python",
+  "name": "Python Verification Strategy",
+  "version": "1.0.0",
+  "category": "verify",
+  "provides": ["verify.python"],
+  "requires": [],
+  "auto_detect": {
+    "files": ["pyproject.toml", "setup.py", "requirements.txt"]
+  },
+  "content": {
+    "instructions": ["verify-strategy.md"]
+  }
+}

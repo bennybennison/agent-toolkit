@@ -1,0 +1,24 @@
+{
+  "id": "skills-python",
+  "name": "Python Skills",
+  "version": "1.0.0",
+  "category": "skills",
+  "provides": [
+    "skill.python-testing",
+    "skill.cli-conventions",
+    "skill.concurrency-async",
+    "skill.dependency-management",
+    "skill.hybrid-data-patterns",
+    "skill.logging-standards",
+    "skill.raw-store-patterns",
+    "skill.simple-data-patterns"
+  ],
+  "requires": [],
+  "auto_detect": {
+    "files": ["pyproject.toml", "setup.py", "requirements.txt"]
+  },
+  "profiles": ["standard", "full"],
+  "content": {
+    "instructions": ["*.md"]
+  }
+}

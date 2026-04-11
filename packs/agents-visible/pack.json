@@ -1,0 +1,19 @@
+{
+  "id": "agents-visible",
+  "name": "Visible Orchestrators",
+  "version": "1.0.0",
+  "category": "agents",
+  "provides": [
+    "agent.session-manager",
+    "agent.orchestrator"
+  ],
+  "requires": [],
+  "always": true,
+  "hostVisibility": "visible",
+  "content": {
+    "agents": [
+      "../../content/agents/session-manager.md",
+      "../../content/agents/orchestrator.md"
+    ]
+  }
+}

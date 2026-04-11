@@ -1,0 +1,36 @@
+{
+  "name": "__PLUGIN_NAME__",
+  "version": "__PLUGIN_VERSION__",
+  "description": "__PLUGIN_DESCRIPTION__",
+  "author": {
+    "name": "__AUTHOR_NAME__"
+  },
+  "keywords": [
+    "__PLUGIN_NAME__",
+    "agent-toolkit",
+    "codex",
+    "review",
+    "issues",
+    "mcp",
+    "coding"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "__DISPLAY_NAME__",
+    "shortDescription": "__SHORT_DESCRIPTION__",
+    "longDescription": "__LONG_DESCRIPTION__",
+    "developerName": "__AUTHOR_NAME__",
+    "category": "Coding",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "__DEFAULT_PROMPT__"
+    ],
+    "brandColor": "__BRAND_COLOR__",
+    "screenshots": []
+  }
+}

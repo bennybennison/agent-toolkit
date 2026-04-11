@@ -1,0 +1,35 @@
+{
+  "category": "comms",
+  "description": "Communication and productivity — Google Workspace, Microsoft 365, Slack",
+  "note": "All servers in this category require OAuth or API credentials. See each server's README for setup.",
+  "servers": {
+    "google-workspace": {
+      "type": "local",
+      "command": ["npx", "google-workspace-mcp"],
+      "enabled": false,
+      "note": "Community (aaronsb/google-workspace-mcp, 623 stars). Requires Google OAuth credentials."
+    },
+    "outlook": {
+      "type": "local",
+      "command": ["npx", "outlook-mcp"],
+      "enabled": false,
+      "note": "Community (titanzero/outlook-mcp, 611 stars). Requires Azure app registration + MS Graph OAuth."
+    },
+    "teams": {
+      "type": "local",
+      "command": ["npx", "@inditextech/mcp-teams-server"],
+      "enabled": false,
+      "note": "Community (InditexTech, 357 stars). Requires Azure app registration + MS Graph OAuth."
+    },
+    "slack": {
+      "type": "local",
+      "command": ["npx", "@anthropic/mcp-server-slack"],
+      "environment": {
+        "SLACK_BOT_TOKEN": "{env:SLACK_BOT_TOKEN}",
+        "SLACK_TEAM_ID": "{env:SLACK_TEAM_ID}"
+      },
+      "enabled": false,
+      "note": "Archived reference. Requires Slack bot token + team ID."
+    }
+  }
+}

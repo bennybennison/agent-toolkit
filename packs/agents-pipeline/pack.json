@@ -1,0 +1,18 @@
+{
+  "id": "agents-pipeline",
+  "name": "Hidden Specialists — Pipeline",
+  "version": "1.0.0",
+  "category": "agents",
+  "provides": [
+    "agent.mapper",
+    "agent.builder",
+    "agent.auditor",
+    "agent.verifier"
+  ],
+  "requires": [],
+  "profiles": ["standard", "full"],
+  "hostVisibility": "hidden",
+  "content": {
+    "agents": ["*.md"]
+  }
+}

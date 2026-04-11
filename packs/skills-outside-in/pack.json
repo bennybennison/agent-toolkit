@@ -1,0 +1,21 @@
+{
+  "id": "skills-outside-in",
+  "name": "Outside-In Design Skills",
+  "version": "1.0.0",
+  "category": "skills",
+  "provides": [
+    "skill.outside-in-mode",
+    "skill.workflow-discovery",
+    "skill.screen-flow-design",
+    "skill.mock-data-design",
+    "skill.mock-api-contracts",
+    "skill.backend-derivation",
+    "skill.infra-derivation"
+  ],
+  "requires": [],
+  "profiles": ["standard", "full"],
+  "content": {
+    "instructions": ["*.md"],
+    "templates": ["../../templates/outside-in/*.md"]
+  }
+}

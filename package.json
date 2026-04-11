@@ -1,0 +1,33 @@
+{
+  "name": "agent-toolkit",
+  "version": "0.1.0",
+  "description": "Primary portable product for reusable packs, skills, adapters, templates, and an optional runtime layer.",
+  "type": "module",
+  "bin": {
+    "agent-toolkit": "bin/cli.ts"
+  },
+  "exports": {
+    ".": "./index.ts",
+    "./package.json": "./package.json",
+    "./adapters/*": "./adapters/*",
+    "./content/*": "./content/*",
+    "./packs/*": "./packs/*",
+    "./runtime/*": "./runtime/*",
+    "./scripts/*": "./scripts/*",
+    "./templates/*": "./templates/*"
+  },
+  "dependencies": {
+    "@opencode-ai/plugin": "^1.2.27"
+  },
+  "files": [
+    "README.md",
+    "index.ts",
+    "bin/",
+    "adapters/",
+    "content/",
+    "packs/",
+    "runtime/",
+    "scripts/",
+    "templates/"
+  ]
+}

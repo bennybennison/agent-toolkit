@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+
+# Local toolkit / runtime state
+.agent/
+.agent-toolkit/
+.agent-toolkit-context/
+.agents/
+opencode.json
+plugins/
+
+# Generated host-local files
+.vscode/mcp.json
+
+# Build / test / cache
+coverage/
+dist/
+.ruff_cache/
+.tmp/
+
+# Secrets
+.env
+.env.*
+!.env.example

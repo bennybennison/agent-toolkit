@@ -1,0 +1,14 @@
+{
+  "id": "mcp-data",
+  "name": "Data MCP Servers",
+  "version": "1.0.0",
+  "category": "mcp",
+  "provides": ["mcp.postgres", "mcp.ftp"],
+  "requires": [],
+  "auto_detect": {
+    "files": ["alembic.ini", "docker-compose.yml", "docker-compose.yaml"]
+  },
+  "content": {
+    "mcp": ["servers.json"]
+  }
+}

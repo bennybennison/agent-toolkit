@@ -1,0 +1,15 @@
+{
+  "module_id": "integrator.bridge.default",
+  "layer": "specialist",
+  "version": "1.0.0",
+  "provides": ["integrator.bridge.v1"],
+  "depends_on": ["ledger.store.v1", "memory.tier-store.v1", "escalation.engine.v1"],
+  "config_schema_version": 1,
+  "feature_flags": ["hook.write-guard"],
+  "lifecycle_hooks": ["init", "healthcheck", "shutdown"],
+  "health_contract": {
+    "required_checks": ["shadow_root_ready", "governance_gate_bound"],
+    "severity": "error"
+  },
+  "replacement_policy": "restart-required"
+}

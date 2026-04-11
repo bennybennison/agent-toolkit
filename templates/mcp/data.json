@@ -1,0 +1,21 @@
+{
+  "category": "data",
+  "description": "Data and file transfer — databases, FTP/SFTP",
+  "servers": {
+    "postgres": {
+      "type": "local",
+      "command": ["npx", "@modelcontextprotocol/server-postgres"],
+      "environment": {
+        "POSTGRES_CONNECTION_STRING": "{env:POSTGRES_CONNECTION_STRING}"
+      },
+      "enabled": false,
+      "note": "Archived reference. Read-only with schema inspection. Pass connection string as CLI arg or env var."
+    },
+    "ftp": {
+      "type": "local",
+      "command": ["npx", "mcp-server-ftp"],
+      "enabled": false,
+      "note": "Community (alxspiker/mcp-server-ftp, 15 stars). Basic FTP operations."
+    }
+  }
+}

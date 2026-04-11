@@ -1,0 +1,15 @@
+{
+  "module_id": "shadow.root",
+  "layer": "foundation",
+  "version": "1.0.0",
+  "provides": ["shadow.workspace.v1"],
+  "depends_on": ["ledger.store.v1"],
+  "config_schema_version": 1,
+  "feature_flags": ["hook.shadow-root"],
+  "lifecycle_hooks": ["init", "healthcheck", "shutdown"],
+  "health_contract": {
+    "required_checks": ["staging_root_exists", "mission_state_readable"],
+    "severity": "warn"
+  },
+  "replacement_policy": "restart-required"
+}

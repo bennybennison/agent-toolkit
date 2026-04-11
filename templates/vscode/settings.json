@@ -1,0 +1,8 @@
+{
+  "files.exclude": {
+    "**/{{PROJECT_STATE_DIR}}": false
+  },
+  "search.exclude": {
+    "**/{{PROJECT_STATE_DIR}}": true
+  }
+}

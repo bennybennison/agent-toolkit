@@ -1,0 +1,15 @@
+{
+  "module_id": "signature.gate.default",
+  "layer": "governance",
+  "version": "1.0.0",
+  "provides": ["signature.gate.v1"],
+  "depends_on": ["ledger.store.v1"],
+  "config_schema_version": 1,
+  "feature_flags": ["hook.commander-enforcement"],
+  "lifecycle_hooks": ["init", "healthcheck", "shutdown"],
+  "health_contract": {
+    "required_checks": ["signature_validation_ready"],
+    "severity": "error"
+  },
+  "replacement_policy": "restart-required"
+}

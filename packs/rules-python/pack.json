@@ -1,0 +1,21 @@
+{
+  "id": "rules-python",
+  "name": "Python Rules",
+  "version": "1.0.0",
+  "category": "rules",
+  "provides": [
+    "rule.python-imports",
+    "rule.python-class-structure",
+    "rule.python-type-hints",
+    "rule.python-pydantic",
+    "rule.python-testing",
+    "rule.python-tooling"
+  ],
+  "requires": [],
+  "auto_detect": {
+    "files": ["pyproject.toml", "setup.py", "requirements.txt"]
+  },
+  "content": {
+    "instructions": ["*.md"]
+  }
+}

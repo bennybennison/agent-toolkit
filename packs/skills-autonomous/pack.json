@@ -1,0 +1,17 @@
+{
+  "id": "skills-autonomous",
+  "name": "Autonomous Workflow Skills",
+  "version": "1.0.0",
+  "category": "skills",
+  "provides": [
+    "skill.autonomous-loops",
+    "skill.beads-workflow",
+    "skill.agent-harness-design",
+    "skill.tdd-workflow"
+  ],
+  "requires": [],
+  "profiles": ["full"],
+  "content": {
+    "instructions": ["*.md"]
+  }
+}

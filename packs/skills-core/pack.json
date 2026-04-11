@@ -1,0 +1,29 @@
+{
+  "id": "skills-core",
+  "name": "Core Skills",
+  "version": "1.0.0",
+  "category": "skills",
+  "provides": [
+    "skill.intent-gate",
+    "skill.iterative-retrieval",
+    "skill.model-routing",
+    "skill.cost-tracking",
+    "skill.strategic-compact",
+    "skill.progressive-disclosure",
+    "skill.search-first",
+    "skill.terminal-execution",
+    "skill.verification-loop",
+    "skill.debugging-methodology",
+    "skill.post-work-update",
+    "skill.skill-creator",
+    "skill.request-skill",
+    "skill.prompt-optimizer",
+    "skill.split-large-file",
+    "skill.using-agent-toolkit"
+  ],
+  "requires": [],
+  "always": true,
+  "content": {
+    "instructions": ["*.md"]
+  }
+}

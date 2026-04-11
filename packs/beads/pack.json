@@ -1,0 +1,19 @@
+{
+  "id": "beads",
+  "name": "Beads Task Tracking",
+  "version": "1.0.0",
+  "category": "commands",
+  "provides": [
+    "command.bd-view",
+    "command.bd-check",
+    "command.bd",
+    "backend.beads"
+  ],
+  "requires": [],
+  "auto_detect": {
+    "files": [".beads", ".beads/config.toml"]
+  },
+  "content": {
+    "commands": ["*.md"]
+  }
+}

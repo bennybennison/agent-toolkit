@@ -1,0 +1,19 @@
+{
+  "category": "web",
+  "description": "Web scraping and browser automation",
+  "servers": {
+    "playwright": {
+      "type": "local",
+      "command": ["npx", "@playwright/mcp"],
+      "enabled": true
+    },
+    "firecrawl": {
+      "type": "local",
+      "command": ["npx", "firecrawl-mcp"],
+      "environment": {
+        "FIRECRAWL_API_KEY": "{env:FIRECRAWL_API_KEY}"
+      },
+      "enabled": false
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "module_id": "memory.staged",
+  "layer": "foundation",
+  "version": "1.0.0",
+  "provides": ["memory.tier-store.v1"],
+  "depends_on": ["ledger.store.v1"],
+  "config_schema_version": 1,
+  "feature_flags": [],
+  "lifecycle_hooks": ["init", "healthcheck", "shutdown"],
+  "health_contract": {
+    "required_checks": ["tier_paths_valid", "promotion_rules_loaded"],
+    "severity": "warn"
+  },
+  "replacement_policy": "hot-swap"
+}

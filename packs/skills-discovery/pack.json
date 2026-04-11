@@ -1,0 +1,19 @@
+{
+  "id": "skills-discovery",
+  "name": "Discovery And Strategy Skills",
+  "version": "1.0.0",
+  "category": "skills",
+  "provides": [
+    "skill.idea-exploration",
+    "skill.feasibility-and-placement",
+    "skill.repo-mapping",
+    "skill.implementation-strategy-selection",
+    "skill.bug-diagnosis",
+    "skill.refactor-planning"
+  ],
+  "requires": [],
+  "profiles": ["standard", "full"],
+  "content": {
+    "instructions": ["*.md"]
+  }
+}

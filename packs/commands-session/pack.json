@@ -1,0 +1,16 @@
+{
+  "id": "commands-session",
+  "name": "Session Workflows",
+  "version": "1.0.0",
+  "category": "commands",
+  "provides": [
+    "command.session"
+  ],
+  "requires": [],
+  "always": true,
+  "content": {
+    "commands": [
+      "*.md"
+    ]
+  }
+}

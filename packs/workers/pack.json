@@ -1,0 +1,16 @@
+{
+  "id": "workers",
+  "name": "Background Workers",
+  "version": "1.0.0",
+  "category": "workers",
+  "provides": [
+    "worker.dep-graph-reader",
+    "worker.diff-summarizer",
+    "worker.file-metadata-reader",
+    "worker.migration-checker",
+    "worker.test-runner"
+  ],
+  "requires": [],
+  "profiles": ["standard", "full"],
+  "content": {}
+}

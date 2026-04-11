@@ -1,0 +1,16 @@
+{
+  "id": "rules-typescript",
+  "name": "TypeScript Rules",
+  "version": "1.0.0",
+  "category": "rules",
+  "provides": [
+    "rule.react-patterns"
+  ],
+  "requires": [],
+  "auto_detect": {
+    "files": ["tsconfig.json"]
+  },
+  "content": {
+    "instructions": ["*.md"]
+  }
+}

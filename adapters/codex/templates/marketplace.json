@@ -1,0 +1,7 @@
+{
+  "name": "__MARKETPLACE_NAME__",
+  "interface": {
+    "displayName": "__MARKETPLACE_DISPLAY_NAME__"
+  },
+  "plugins": []
+}

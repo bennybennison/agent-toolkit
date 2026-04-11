@@ -1,0 +1,11 @@
+{
+  "id": "mcp-ecommerce",
+  "name": "E-commerce MCP Servers",
+  "version": "1.0.0",
+  "category": "mcp",
+  "provides": ["mcp.stripe", "mcp.shopify"],
+  "requires": [],
+  "content": {
+    "mcp": ["servers.json"]
+  }
+}

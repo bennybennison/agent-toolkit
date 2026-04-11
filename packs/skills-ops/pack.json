@@ -1,0 +1,21 @@
+{
+  "id": "skills-ops",
+  "name": "Ops & Infrastructure Skills",
+  "version": "1.0.0",
+  "category": "skills",
+  "provides": [
+    "skill.deployment-patterns",
+    "skill.environment-management",
+    "skill.database-patterns",
+    "skill.security-review",
+    "skill.api-design",
+    "skill.git-commit-discipline",
+    "skill.connector-dev",
+    "skill.monorepo-navigation"
+  ],
+  "requires": [],
+  "profiles": ["standard", "full"],
+  "content": {
+    "instructions": ["*.md"]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "module_id": "confidence.auditor.default",
+  "layer": "command",
+  "version": "1.0.0",
+  "provides": ["confidence.auditor.v1"],
+  "depends_on": ["commander.policy.v1"],
+  "config_schema_version": 1,
+  "feature_flags": [],
+  "lifecycle_hooks": ["init", "healthcheck"],
+  "health_contract": {
+    "required_checks": ["weights_normalized"],
+    "severity": "warn"
+  },
+  "replacement_policy": "hot-swap"
+}

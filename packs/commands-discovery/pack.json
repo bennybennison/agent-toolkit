@@ -1,0 +1,23 @@
+{
+  "id": "commands-discovery",
+  "name": "Discovery Commands",
+  "version": "1.0.0",
+  "category": "commands",
+  "provides": [
+    "command.explore",
+    "command.map",
+    "command.repair"
+  ],
+  "requires": [
+    "skill.idea-exploration",
+    "skill.feasibility-and-placement",
+    "skill.repo-mapping",
+    "skill.implementation-strategy-selection",
+    "skill.bug-diagnosis",
+    "skill.refactor-planning"
+  ],
+  "profiles": ["standard", "full"],
+  "content": {
+    "commands": ["*.md"]
+  }
+}

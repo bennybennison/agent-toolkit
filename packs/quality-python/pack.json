@@ -1,0 +1,18 @@
+{
+  "id": "quality-python",
+  "name": "Python Quality Hooks",
+  "version": "1.0.0",
+  "category": "quality",
+  "provides": [
+    "hook.python-lint",
+    "hook.python-typecheck"
+  ],
+  "requires": [],
+  "auto_detect": {
+    "files": ["pyproject.toml", "setup.py", "requirements.txt"]
+  },
+  "profiles": ["standard", "full"],
+  "content": {
+    "hooks": ["python-lint", "python-typecheck"]
+  }
+}

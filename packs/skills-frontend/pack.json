@@ -1,0 +1,17 @@
+{
+  "id": "skills-frontend",
+  "name": "Frontend Skills",
+  "version": "1.0.0",
+  "category": "skills",
+  "provides": [
+    "skill.frontend-patterns"
+  ],
+  "requires": [],
+  "auto_detect": {
+    "files": ["next.config.js", "next.config.ts", "vite.config.ts", "vite.config.js"]
+  },
+  "profiles": ["standard", "full"],
+  "content": {
+    "instructions": ["*.md"]
+  }
+}

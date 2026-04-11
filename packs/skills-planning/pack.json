@@ -1,0 +1,23 @@
+{
+  "id": "skills-planning",
+  "name": "Planning Skills",
+  "version": "1.0.0",
+  "category": "skills",
+  "provides": [
+    "skill.blueprint",
+    "skill.agent-orchestration",
+    "skill.eval-driven-development",
+    "skill.multi-perspective-analysis",
+    "skill.spec-lifecycle",
+    "skill.review-specs",
+    "skill.portfolio-management",
+    "skill.continuous-learning",
+    "skill.doc-coauthoring",
+    "skill.document-ownership"
+  ],
+  "requires": [],
+  "profiles": ["standard", "full"],
+  "content": {
+    "instructions": ["*.md"]
+  }
+}

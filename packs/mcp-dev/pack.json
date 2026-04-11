@@ -1,0 +1,12 @@
+{
+  "id": "mcp-dev",
+  "name": "Dev MCP Servers",
+  "version": "1.0.0",
+  "category": "mcp",
+  "provides": ["mcp.git", "mcp.npm", "mcp.bash"],
+  "requires": [],
+  "always": true,
+  "content": {
+    "mcp": ["servers.json"]
+  }
+}

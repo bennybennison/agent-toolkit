@@ -1,0 +1,5 @@
+export * from "./runtime/lib/toolkit-environment.ts"
+export * from "./runtime/lib/toolkit-operations.ts"
+export * from "./runtime/lib/opencode-global-install.ts"
+export * from "./runtime/lib/tooling/command-catalog.ts"
+export * from "./runtime/lib/tooling/recipe-catalog.ts"

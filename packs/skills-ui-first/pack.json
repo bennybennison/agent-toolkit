@@ -1,0 +1,17 @@
+{
+  "id": "skills-ui-first",
+  "name": "UI-First Design Skills",
+  "version": "1.0.0",
+  "category": "skills",
+  "provides": [
+    "skill.ui-first-mode",
+    "skill.wireframe-planning",
+    "skill.mock-ui-handoff"
+  ],
+  "requires": [],
+  "profiles": ["standard", "full"],
+  "content": {
+    "instructions": ["*.md"],
+    "templates": ["../../templates/ui-first/*.md"]
+  }
+}

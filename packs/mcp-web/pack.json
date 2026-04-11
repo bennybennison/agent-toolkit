@@ -1,0 +1,12 @@
+{
+  "id": "mcp-web",
+  "name": "Web MCP Servers",
+  "version": "1.0.0",
+  "category": "mcp",
+  "provides": ["mcp.http", "mcp.web-search"],
+  "requires": [],
+  "profiles": ["standard", "full"],
+  "content": {
+    "mcp": ["servers.json"]
+  }
+}

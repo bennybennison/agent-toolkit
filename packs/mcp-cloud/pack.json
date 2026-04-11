@@ -1,0 +1,14 @@
+{
+  "id": "mcp-cloud",
+  "name": "Cloud MCP Servers",
+  "version": "1.0.0",
+  "category": "mcp",
+  "provides": ["mcp.aws", "mcp.gcp", "mcp.azure"],
+  "requires": [],
+  "auto_detect": {
+    "files": ["serverless.yml", "serverless.yaml"]
+  },
+  "content": {
+    "mcp": ["servers.json"]
+  }
+}

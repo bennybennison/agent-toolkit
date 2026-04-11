@@ -1,0 +1,14 @@
+{
+  "id": "quality-comments",
+  "name": "Comment Quality Hook",
+  "version": "1.0.0",
+  "category": "quality",
+  "provides": [
+    "hook.comment-checker"
+  ],
+  "requires": [],
+  "profiles": ["full"],
+  "content": {
+    "hooks": ["comment-checker"]
+  }
+}
