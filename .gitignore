@@ -8,6 +8,7 @@ Thumbs.db
 
 # Local toolkit / runtime state
 .agent/
+.agent-artifacts/
 .agent-toolkit/
 .agent-toolkit-context/
 .agents/
@@ -24,6 +25,9 @@ dist/
 .tmp/
 __pycache__/
 *.pyc
+
+# Optional generated projections
+adapters/contracts/python-pydantic/generated/
 
 # Secrets
 .env
