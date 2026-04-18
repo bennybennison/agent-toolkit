@@ -213,6 +213,8 @@ export function clearMission(): void {
 
 function resolveHandoffTypeForStage(stage: string | null): string | null {
   switch (stage) {
+    case "contractor":
+      return null
     case "mapper":
       return "MapReport"
     case "builder":

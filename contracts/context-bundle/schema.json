@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ContextBundle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "bundleId",
+    "missionId",
+    "purpose",
+    "createdAt",
+    "taskBrief",
+    "mapContext",
+    "handoffContext",
+    "risks",
+    "constraints",
+    "nextAction"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "const": 1
+    },
+    "bundleId": { "type": "string" },
+    "missionId": { "type": "string" },
+    "purpose": {
+      "type": "string",
+      "enum": [
+        "planning",
+        "implementation",
+        "review",
+        "verification",
+        "handoff"
+      ]
+    },
+    "createdAt": { "type": "string" },
+    "taskBrief": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "missionId",
+        "intent",
+        "scope",
+        "constraints",
+        "operationStyle",
+        "mode",
+        "crThreshold"
+      ],
+      "properties": {
+        "missionId": { "type": "string" },
+        "intent": { "type": "string" },
+        "scope": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["include", "exclude"],
+          "properties": {
+            "include": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "exclude": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        },
+        "constraints": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "operationStyle": {
+          "type": "string",
+          "enum": ["interactive", "autonomous"]
+        },
+        "mode": {
+          "type": "string",
+          "enum": ["online", "offline", "hybrid", "autonomous", "review", "planning"]
+        },
+        "crThreshold": { "type": "number" }
+      }
+    },
+    "mapContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "projectMapId",
+        "taskMapId",
+        "relevantDirectories",
+        "relevantFiles",
+        "keySymbols",
+        "staleFiles",
+        "unmappedFiles"
+      ],
+      "properties": {
+        "projectMapId": { "type": "string" },
+        "taskMapId": { "type": "string" },
+        "relevantDirectories": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "relevantFiles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "path",
+              "summary",
+              "purpose",
+              "keySymbols",
+              "tags",
+              "mappingStatus",
+              "relationships"
+            ],
+            "properties": {
+              "path": { "type": "string" },
+              "summary": { "type": ["string", "null"] },
+              "purpose": { "type": ["string", "null"] },
+              "keySymbols": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "tags": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "mappingStatus": {
+                "type": "string",
+                "enum": ["unmapped", "mapped", "stale", "skipped", "error"]
+              },
+              "relationships": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["type", "targetPath"],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "imports",
+                        "imported-by",
+                        "tests",
+                        "tested-by",
+                        "configures",
+                        "documents",
+                        "references"
+                      ]
+                    },
+                    "targetPath": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "keySymbols": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "staleFiles": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "unmappedFiles": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "handoffContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mapReport": { "type": "object" },
+        "buildProposal": { "type": "object" },
+        "auditReport": { "type": "object" },
+        "verificationReport": { "type": "object" }
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "constraints": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "nextAction": {
+      "type": ["string", "null"]
+    }
+  }
+}

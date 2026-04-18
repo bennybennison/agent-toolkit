@@ -34,18 +34,18 @@ Do not jump straight to database tables, service layers, or event pipelines unle
 
 Create or update these artifacts as needed:
 
-- `WorkflowBrief`
-- `ScreenFlowSpec`
-- `ScreenSpec`
-- `MockDataset`
-- `ApiContract`
-- `ValidatedAppSlice`
-- `DataRequirementSpec`
-- `BackendRequirementSpec`
-- `InfraRequirementSpec`
-- `ImplementationPlan`
+- `wireframe-plan`
+- `mock-data-plan`
+- `api-contract-set`
 
-Use the templates in `templates/outside-in/` when creating them.
+Use the toolkit contracts as the durable output layer:
+
+- `contracts/wireframe-plan/CONTRACT.md`
+- `contracts/mock-data-plan/CONTRACT.md`
+- `contracts/api-contract-set/CONTRACT.md`
+
+Use `templates/outside-in/` only as supporting design references when the
+contract template needs more detailed domain-specific structure.
 
 ## Phase Flow
 

@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MapReport",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "title",
+    "requestScope",
+    "relevantAreas",
+    "existingPatterns",
+    "candidatePlacement",
+    "risks",
+    "feasibilityNotes"
+  ],
+  "properties": {
+    "title": { "type": "string" },
+    "requestScope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "goal",
+        "targetArea"
+      ],
+      "properties": {
+        "goal": { "type": "string" },
+        "targetArea": { "type": "string" }
+      }
+    },
+    "relevantAreas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "areaOrModule",
+          "whyItMatters"
+        ],
+        "properties": {
+          "areaOrModule": { "type": "string" },
+          "whyItMatters": { "type": "string" }
+        }
+      }
+    },
+    "existingPatterns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "pattern",
+          "whereItAppears",
+          "whyToFollowIt"
+        ],
+        "properties": {
+          "pattern": { "type": "string" },
+          "whereItAppears": { "type": "string" },
+          "whyToFollowIt": { "type": "string" }
+        }
+      }
+    },
+    "candidatePlacement": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "option",
+          "pros",
+          "constraints"
+        ],
+        "properties": {
+          "option": { "type": "string" },
+          "pros": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "constraints": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "risk",
+          "severity",
+          "mitigationDirection"
+        ],
+        "properties": {
+          "risk": { "type": "string" },
+          "severity": {
+            "type": "string",
+            "enum": ["low", "medium", "high"]
+          },
+          "mitigationDirection": { "type": "string" }
+        }
+      }
+    },
+    "feasibilityNotes": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

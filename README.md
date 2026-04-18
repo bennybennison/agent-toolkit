@@ -83,7 +83,23 @@ Shared skills are now seeded into `.agents/skills/`:
 - host-specific adapter files still exist, but `.agents/skills/` is the common portable skill surface
 - `skills/` is the toolkit-owned authored source for portable shared skills
 - `recipes/` is the toolkit-owned authored source for top-level orchestration routes
+- `contracts/` is the toolkit-owned authored source for portable artifact and handover definitions
 - packs remain the composition layer that decides which authored skills are installed
+
+Skill folders may include nested support material such as `references/`,
+`templates/`, or `examples/` when those files are tightly related to one parent
+skill. `SKILL.md` remains the discoverable entrypoint and should route the user
+or agent to the deeper files when needed.
+
+Contract-backed workflows can also leave durable Markdown artifacts under
+`.agent-artifacts/` using recipe-defined output roots. This is a file-first
+convention for handoffs, plans, context bundles, decisions, and verification
+evidence rather than a required runtime subsystem.
+
+Optional specialist and adapter layers may interpret those contracts:
+
+- hidden specialist `Contractor` for contract-aware routing and validation
+- optional Python/Pydantic projection under `adapters/contracts/python-pydantic/`
 
 Install is tool-first and local-first:
 
@@ -118,6 +134,16 @@ agent-toolkit tools inspect opencode --scope global
 agent-toolkit tools cleanup codex --scope global --mode toolkit
 ```
 
+Contract workflow examples:
+
+```bash
+agent-toolkit contracts show plan
+agent-toolkit contracts scaffold plan "warehouse-picking-overhaul"
+agent-toolkit contracts validate plan .agent-artifacts/plans/warehouse-picking-overhaul.md
+agent-toolkit contracts emit-pydantic plan
+agent-toolkit contracts scaffold verification-report --out .agent-artifacts/verification/fix-stock-count.md
+```
+
 If you add new toolkit agents, skills, recipes, commands, or packs:
 
 - the toolkit catalog sees them immediately
@@ -138,7 +164,9 @@ Package areas:
 
 - `skills/` for toolkit-owned authored shared skills that install into `.agents/skills/`
 - `recipes/` for toolkit-owned authored orchestration routes such as hold, session, map, plan, implement, repair, review, and wireframe
+- `contracts/` for toolkit-owned authored artifact and handover contracts, including human-readable definitions, schemas, and writing templates
 - `adapters/` for host-specific install/render logic
+- `adapters/contracts/` for optional language-specific contract projection layers
 - `content/` for toolkit-owned legacy skills, agents, and commands that have not yet moved into packs
 - `runtime/lib/toolkit-environment.ts` for toolkit path resolution, package metadata, and host conventions
 - `runtime/lib/toolkit-operations.ts` for target generation, install recording, catalog access, and content inventory
@@ -154,6 +182,11 @@ Recent capability additions:
 
 - `skills/using-agent-toolkit/` for lightweight workflow orientation and top-level routing without mandatory ceremony
 - `recipes/` for a first-class recipe layer that the top-level orchestrator can inspect and select
+- `contracts/` for a first-class contract layer that can later drive runtime validation without making runtime the source of truth
+- `skills/contract-workflow/` for skill-led contract usage and durable artifact routing
+- `.agent-artifacts/` as the default repo-local convention for durable contract-backed outputs
+- `packs/agents-core/contractor.md` for an optional hidden contract-aware specialist
+- `adapters/contracts/python-pydantic/` for removable Python/Pydantic contract projections
 - runtime mission startup now records and uses a selected recipe for command-driven orchestration
 - `packs/rules-common/` for reusable documentation, security, modularity, monorepo, MCP, and workflow governance rules
 - `packs/skills-discovery/` for idea exploration, feasibility and placement, repo mapping, implementation strategy selection, bug diagnosis, and refactor planning

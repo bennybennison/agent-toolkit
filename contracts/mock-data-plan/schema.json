@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MockDataPlan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["title", "scenarioCoverage", "representativeRecords", "edgeCases"],
+  "properties": {
+    "title": { "type": "string" },
+    "scenarioCoverage": { "type": "array", "items": { "type": "string" } },
+    "representativeRecords": { "type": "array", "items": { "type": "string" } },
+    "edgeCases": { "type": "array", "items": { "type": "string" } },
+    "realismNotes": { "type": "array", "items": { "type": "string" } }
+  }
+}

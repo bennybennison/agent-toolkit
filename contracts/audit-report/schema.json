@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AuditReport",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "title",
+    "scopeReviewed",
+    "findings",
+    "architectureAndPolicyFit",
+    "recommendation"
+  ],
+  "properties": {
+    "title": { "type": "string" },
+    "scopeReviewed": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "changeOrArea",
+        "evidenceUsed"
+      ],
+      "properties": {
+        "changeOrArea": { "type": "string" },
+        "evidenceUsed": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "severity",
+          "fileOrArea",
+          "issue",
+          "fixRecommendation"
+        ],
+        "properties": {
+          "severity": {
+            "type": "string",
+            "enum": ["critical", "warning", "suggestion"]
+          },
+          "fileOrArea": { "type": "string" },
+          "issue": { "type": "string" },
+          "fixRecommendation": { "type": "string" }
+        }
+      }
+    },
+    "architectureAndPolicyFit": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "constraintChecked",
+          "result"
+        ],
+        "properties": {
+          "constraintChecked": { "type": "string" },
+          "result": { "type": "string" }
+        }
+      }
+    },
+    "safetyAndMaintainabilityNotes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "recommendation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision",
+        "blockingFindings",
+        "nextStep"
+      ],
+      "properties": {
+        "decision": { "type": "string" },
+        "blockingFindings": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "nextStep": { "type": "string" }
+      }
+    }
+  }
+}

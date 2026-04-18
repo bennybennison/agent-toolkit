@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SessionSummary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["title", "currentStatus", "activeWork", "notableChanges"],
+  "properties": {
+    "title": { "type": "string" },
+    "currentStatus": { "type": "string" },
+    "activeWork": { "type": "array", "items": { "type": "string" } },
+    "notableChanges": { "type": "array", "items": { "type": "string" } },
+    "blockersOrRisks": { "type": "array", "items": { "type": "string" } }
+  }
+}

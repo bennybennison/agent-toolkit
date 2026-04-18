@@ -9,6 +9,7 @@ export type SpecialistToolPermissions = {
 export const SPECIALIST_TOOL_PERMISSIONS: Record<string, SpecialistToolPermissions> = {
   "session-manager": { write: false, edit: false, bash: true },
   orchestrator: { write: true, edit: true, bash: true },
+  contractor: { write: false, edit: false, bash: false },
   mapper: { write: false, edit: false, bash: false },
   builder: { write: true, edit: true, bash: true },
   auditor: { write: false, edit: false, bash: false },

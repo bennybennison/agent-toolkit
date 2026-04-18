@@ -1,6 +1,6 @@
 import type { OperationStyle } from "../framework-config"
 
-export type SpecialistName = "mapper" | "builder" | "auditor" | "verifier" | "tdd-runner"
+export type SpecialistName = "contractor" | "mapper" | "builder" | "auditor" | "verifier" | "tdd-runner"
 
 export type TaskType = "feature" | "bug" | "refactor" | "tdd"
 

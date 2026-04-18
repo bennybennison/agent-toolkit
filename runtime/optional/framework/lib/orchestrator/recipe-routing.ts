@@ -1,5 +1,6 @@
 import type { InteractionPolicy, RuntimeRecipeId } from "../contracts/handoff"
 import type { OperationStyle } from "../framework-config"
+import { getRuntimeRecipeMetadata } from "./recipe-metadata"
 import type { SpecialistName, SpecialistRoute, TaskType } from "./specialist-router"
 import { normalizeTaskType } from "./specialist-router"
 
@@ -69,26 +70,39 @@ export function getDefaultInteractionPolicyForRecipe(recipeId: RuntimeRecipeId):
 }
 
 function buildRecipeSpecialists(recipeId: RuntimeRecipeId, taskType: TaskType): SpecialistName[] {
+  let specialists: SpecialistName[]
   switch (recipeId) {
     case "hold-and-justify":
     case "session-open-close":
-      return []
+      specialists = []
+      break
     case "map-and-assess":
     case "plan-from-idea":
-      return ["mapper"]
+      specialists = ["mapper"]
+      break
     case "review-and-recommend":
-      return ["mapper", "auditor"]
+      specialists = ["mapper", "auditor"]
+      break
     case "wireframe-outside-in":
-      return ["mapper", "builder", "verifier"]
+      specialists = ["mapper", "builder", "verifier"]
+      break
     case "implement-from-plan":
     case "repair-and-verify":
       if (taskType === "tdd") {
-        return ["tdd-runner", "auditor", "verifier"]
+        specialists = ["tdd-runner", "auditor", "verifier"]
+      } else {
+        specialists = ["builder", "auditor", "verifier"]
       }
-      return ["builder", "auditor", "verifier"]
+      break
     default:
-      return ["mapper", "builder", "auditor", "verifier"]
+      specialists = ["mapper", "builder", "auditor", "verifier"]
   }
+
+  const metadata = getRuntimeRecipeMetadata(recipeId)
+  if (metadata.contractMode === "required" || metadata.contractMode === "validated") {
+    return ["contractor", ...specialists]
+  }
+  return specialists
 }
 
 export function buildRecipeRoute(

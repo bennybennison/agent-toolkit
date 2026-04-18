@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VerificationReport",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "title",
+    "checksRun",
+    "evidence",
+    "signoffRecommendation"
+  ],
+  "properties": {
+    "title": { "type": "string" },
+    "checksRun": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "check",
+          "expected",
+          "actual",
+          "status"
+        ],
+        "properties": {
+          "check": { "type": "string" },
+          "expected": { "type": "string" },
+          "actual": { "type": "string" },
+          "status": {
+            "type": "string",
+            "enum": ["passed", "failed", "partial", "not-run"]
+          }
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "command",
+          "keyResult"
+        ],
+        "properties": {
+          "command": { "type": "string" },
+          "keyResult": { "type": "string" }
+        }
+      }
+    },
+    "issuesFound": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "issue",
+          "impact"
+        ],
+        "properties": {
+          "issue": { "type": "string" },
+          "impact": { "type": "string" }
+        }
+      }
+    },
+    "signoffRecommendation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision",
+        "why"
+      ],
+      "properties": {
+        "decision": { "type": "string" },
+        "why": { "type": "string" }
+      }
+    }
+  }
+}

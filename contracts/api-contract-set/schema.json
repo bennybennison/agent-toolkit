@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ApiContractSet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["title", "contractScope", "endpoints"],
+  "properties": {
+    "title": { "type": "string" },
+    "contractScope": { "type": "string" },
+    "endpoints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["action", "requestShape", "responseShape"],
+        "properties": {
+          "action": { "type": "string" },
+          "requestShape": { "type": "string" },
+          "responseShape": { "type": "string" },
+          "assumptions": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}

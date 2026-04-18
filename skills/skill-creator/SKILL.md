@@ -67,6 +67,30 @@ tags: [relevant, tags]
 - Use tables for quick-reference data (flags, mappings, checklists).
 - Write procedurally (step-by-step workflows), not just declaratively (lists of rules).
 
+Nested support files are allowed when they clearly belong to the same skill:
+
+```text
+skills/
+  <skill-name>/
+    SKILL.md
+    references/
+    templates/
+    examples/
+```
+
+Use nested files when:
+
+- the material is tightly related to the parent skill
+- `SKILL.md` would otherwise become too long
+- the deeper files are support material, not separate discoverable capabilities
+
+Keep these rules:
+
+- `SKILL.md` remains the clear entrypoint
+- `SKILL.md` must point to any nested files that matter and say when to read them
+- if the concept should be independently discoverable or reused across domains,
+  prefer a separate skill instead of a buried nested file
+
 ### 5. Test
 
 Apply the skill to a real scenario:
@@ -135,6 +159,9 @@ The skill name and description determine when agents activate it. Test this:
   good ones. Always show what NOT to do.
 - **Forgetting cross-references.** Skills rarely exist in isolation. Link to
   related skills so agents can load additional context when needed.
+- **Burying reusable capabilities.** If a nested file would be useful on its
+  own across multiple domains, it is probably a separate skill, not just support
+  material.
 - **Write-once skills.** Skills should evolve. If you have never revised a skill,
   you probably have never tested it in practice.
 

@@ -2,9 +2,11 @@
 description: Start, resume, audit, or close a working session with clear status and next-step capture.
 interaction_policy: confirm-first
 capability_ceiling: verify
-contracts: SessionSummary, ContextBundle, NextStepBrief
+contract_mode: required
+artifact_root: .agent-artifacts/handoffs/
+contracts: session-summary, context-bundle, next-step-brief
 skills: using-agent-toolkit, post-work-update
-specialists: cleanup, researcher
+specialists: contractor, cleanup, researcher
 ---
 
 # Session Open Close

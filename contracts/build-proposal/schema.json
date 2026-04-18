@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BuildProposal",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "title",
+    "scope",
+    "filesChanged",
+    "behaviorChanges",
+    "implementationNotes",
+    "confidence"
+  ],
+  "properties": {
+    "title": { "type": "string" },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "goal",
+        "constraintsHonored"
+      ],
+      "properties": {
+        "goal": { "type": "string" },
+        "constraintsHonored": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "filesChanged": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "file",
+          "whyItChanged"
+        ],
+        "properties": {
+          "file": { "type": "string" },
+          "whyItChanged": { "type": "string" }
+        }
+      }
+    },
+    "behaviorChanges": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "implementationNotes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "knownGaps": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "confidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "score",
+        "why"
+      ],
+      "properties": {
+        "score": { "type": "number" },
+        "why": { "type": "string" }
+      }
+    }
+  }
+}

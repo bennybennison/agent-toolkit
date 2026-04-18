@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TaskBrief",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "missionId",
+    "intent",
+    "scope",
+    "constraints",
+    "operationStyle",
+    "mode",
+    "crThreshold"
+  ],
+  "properties": {
+    "missionId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "intent": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "include",
+        "exclude"
+      ],
+      "properties": {
+        "include": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "exclude": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "operationStyle": {
+      "type": "string",
+      "enum": [
+        "interactive",
+        "autonomous"
+      ]
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "online",
+        "offline",
+        "hybrid",
+        "autonomous",
+        "review",
+        "planning"
+      ]
+    },
+    "capabilityCeiling": {
+      "type": "string",
+      "enum": [
+        "read",
+        "verify",
+        "mutate"
+      ]
+    },
+    "interactionPolicy": {
+      "type": "string",
+      "enum": [
+        "confirm-first",
+        "checkpointed",
+        "mutate-only",
+        "final-only"
+      ]
+    },
+    "recipeId": {
+      "type": "string",
+      "enum": [
+        "hold-and-justify",
+        "session-open-close",
+        "map-and-assess",
+        "plan-from-idea",
+        "implement-from-plan",
+        "repair-and-verify",
+        "review-and-recommend",
+        "wireframe-outside-in"
+      ]
+    },
+    "strategy": {
+      "type": "string",
+      "enum": [
+        "outside-in",
+        "ui-first",
+        "inside-out",
+        "frontend-first",
+        "backend-first",
+        "infra-first",
+        "full-stack-staged",
+        "repair-first"
+      ]
+    },
+    "crThreshold": {
+      "type": "number"
+    }
+  }
+}

@@ -4,6 +4,7 @@ export type InstallSource = "attach" | "sync" | "install" | "inferred"
 export type CommandSurface = "user" | "user-agent" | "internal"
 export type InteractionPolicy = "confirm-first" | "checkpointed" | "mutate-only" | "final-only"
 export type CapabilityCeiling = "read" | "verify" | "mutate"
+export type ContractMode = "advisory" | "required" | "validated"
 
 export interface ToolCatalogEntry {
   id: string
@@ -34,6 +35,8 @@ export interface RecipeCatalogEntry {
   sourcePath: string
   interactionPolicy: InteractionPolicy
   capabilityCeiling: CapabilityCeiling
+  contractMode: ContractMode
+  artifactRoot: string
   requiredContracts: string[]
   suggestedSkills: string[]
   allowedSpecialists: string[]

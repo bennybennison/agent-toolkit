@@ -2,9 +2,11 @@
 description: Implement an approved plan, make the required changes, and finish with verification evidence.
 interaction_policy: mutate-only
 capability_ceiling: mutate
-contracts: ChangeSummary, VerificationReport
+contract_mode: validated
+artifact_root: .agent-artifacts/handoffs/
+contracts: build-proposal, change-summary, verification-report
 skills: using-agent-toolkit, verification-loop, terminal-execution
-specialists: builder, verifier, build-fixer, cleanup, tdd-runner
+specialists: contractor, builder, verifier, build-fixer, cleanup, tdd-runner
 ---
 
 # Implement From Plan

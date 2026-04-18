@@ -90,6 +90,12 @@ Review each changed file for:
 
 ## Output Format
 
+Capture the result as a `verification-report` artifact when the task is running
+under a recipe-driven workflow:
+
+- contract definition: `contracts/verification-report/CONTRACT.md`
+- writing scaffold: `contracts/verification-report/TEMPLATE.md`
+
 ```
 VERIFICATION REPORT
 ===================

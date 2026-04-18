@@ -2,9 +2,11 @@
 description: Review code or plans, surface findings, and recommend the next action without silently applying changes.
 interaction_policy: confirm-first
 capability_ceiling: verify
-contracts: AuditReport, RecommendationSet
+contract_mode: required
+artifact_root: .agent-artifacts/handoffs/
+contracts: audit-report, recommendation-set
 skills: using-agent-toolkit, security-review, review-specs
-specialists: code-reviewer, auditor, researcher, architect
+specialists: contractor, code-reviewer, auditor, researcher, architect
 ---
 
 # Review And Recommend

@@ -1,12 +1,23 @@
 ---
 name: "beads-workflow"
-description: "Use `bd` (Beads) for persistent task tracking that survives session boundaries, compaction, and multi-agent handoffs. Beads stores tasks in a Dolt database (`.beads/`) with priorities, dependencies, status, and audit trails."
+description: "Use Beads (`bd`) as the durable task-management system for work that needs priorities, dependencies, status tracking, and cross-session continuity."
 pack: "skills-autonomous"
 ---
 
-# Skill: Beads Workflow
+# Skill: Using Beads
 
-Use `bd` (Beads) for persistent task tracking that survives session boundaries, compaction, and multi-agent handoffs. Beads stores tasks in a Dolt database (`.beads/`) with priorities, dependencies, status, and audit trails.
+Use Beads (`bd`) as the durable task-management system for work that needs to survive session boundaries, compaction, and multi-agent handoffs. Beads stores tasks in a Dolt database (`.beads/`) with priorities, dependencies, status, and audit trails.
+
+Use this skill when the user mentions:
+
+- `Beads`
+- `bd`
+- durable task tracking
+- backlog management across sessions
+- dependency-aware work planning
+- resuming tracked work after compaction or handoff
+
+Do not use this skill for a tiny one-shot checklist that can be handled entirely in the current session.
 
 ## When to Use Beads vs Other Tools
 
@@ -188,3 +199,10 @@ Always use `--json` flag when parsing output programmatically.
 - **Don't forget to close tasks.** Orphaned open tasks cause confusion across sessions.
 - **Don't skip `bd ready`.** It handles dependency resolution — don't manually pick tasks.
 - **Don't treat Dolt startup/connect failures as a product failure immediately.** Retry outside the sandbox first.
+
+## See Also
+
+- [blueprint](../blueprint/SKILL.md)
+- [portfolio-management](../portfolio-management/SKILL.md)
+- [strategic-compact](../strategic-compact/SKILL.md)
+- [using-agent-toolkit](../using-agent-toolkit/SKILL.md)

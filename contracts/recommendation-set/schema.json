@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RecommendationSet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["title", "overallRecommendation", "blockingActions", "optionalFollowUps"],
+  "properties": {
+    "title": { "type": "string" },
+    "overallRecommendation": { "type": "string" },
+    "blockingActions": { "type": "array", "items": { "type": "string" } },
+    "optionalFollowUps": { "type": "array", "items": { "type": "string" } },
+    "unansweredQuestions": { "type": "array", "items": { "type": "string" } }
+  }
+}

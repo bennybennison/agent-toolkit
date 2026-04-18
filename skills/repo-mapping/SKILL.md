@@ -18,7 +18,10 @@ Produce a `ProjectMap` that explains:
 - likely working set for the current task
 - stale, unclear, or risky areas worth extra care
 
-Use the template in `templates/workflows/PROJECT_MAP.md` when creating the artifact.
+For task-facing mapping output, use the toolkit map-report contract:
+
+- contract definition: `contracts/map-report/CONTRACT.md`
+- writing scaffold: `contracts/map-report/TEMPLATE.md`
 
 ## Process
 

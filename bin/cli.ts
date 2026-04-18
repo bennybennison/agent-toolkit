@@ -36,6 +36,10 @@ import {
   toolsPruneRuntimeCommand,
 } from "../runtime/optional/tool-commands"
 import { listToolkitCommands } from "../runtime/lib/tooling/command-catalog"
+import { listToolkitContracts } from "../runtime/lib/tooling/contract-catalog"
+import { emitToolkitContractPydantic } from "../runtime/lib/tooling/contract-pydantic"
+import { scaffoldToolkitContract } from "../runtime/lib/tooling/contract-scaffold"
+import { validateToolkitContractArtifact } from "../runtime/lib/tooling/contract-validate"
 import { listToolkitRecipes } from "../runtime/lib/tooling/recipe-catalog"
 import { isAdapterTarget, type AdapterTarget } from "../runtime/lib/tooling/adapter-targets"
 
@@ -157,6 +161,7 @@ function syncProject(projectDir: string, tools: ToolSet[]): void {
 function statusCommand(projectDir: string, profile: string): void {
   const inventory = getToolkitContentInventory(TOOLKIT_ENV)
   const commands = listToolkitCommands(TOOLKIT_ENV)
+  const contracts = listToolkitContracts(TOOLKIT_ENV)
   const recipes = listToolkitRecipes(TOOLKIT_ENV)
   const activePacks = resolveToolkitPacks(TOOLKIT_ENV, projectDir, profile)
 
@@ -167,15 +172,149 @@ function statusCommand(projectDir: string, profile: string): void {
   console.log(`Agents:       ${inventory.agents.length}`)
   console.log(`Legacy cmds:  ${inventory.commands.length}`)
   console.log(`Commands:     ${commands.length}`)
+  console.log(`Contracts:    ${contracts.length}`)
   console.log(`Recipes:      ${recipes.length}`)
   console.log(`Packs:`)
   console.log(formatToolkitPackSummary(activePacks))
 }
 
+function contractsCatalogCommand(): void {
+  const contracts = listToolkitContracts(TOOLKIT_ENV)
+  for (const contract of contracts) {
+    console.log(`${contract.id}\t${contract.title}\t${contract.purpose}`)
+  }
+}
+
+function contractsShowCommand(id: string | undefined): void {
+  if (!id) {
+    throw new CliCommandError("Usage: agent-toolkit contracts show <id>")
+  }
+
+  const contract = listToolkitContracts(TOOLKIT_ENV).find((entry) => entry.id === id)
+  if (!contract) {
+    throw new CliCommandError(`Unknown contract: ${id}`)
+  }
+
+  console.log(`id: ${contract.id}`)
+  console.log(`title: ${contract.title}`)
+  console.log(`contract: ${contract.contractPath}`)
+  console.log(`schema: ${contract.schemaPath}`)
+  console.log(`template: ${contract.templatePath}`)
+  console.log("")
+  console.log(readFileSync(contract.contractPath, "utf8"))
+}
+
+function readFlagValue(args: string[], flag: string): string | undefined {
+  const index = args.findIndex((entry) => entry === flag)
+  if (index < 0) return undefined
+  const next = args[index + 1]
+  if (!next || next.startsWith("--")) return undefined
+  return next
+}
+
+function collectPositionalArgs(args: string[], valueFlags: string[]): string[] {
+  const positions: string[] = []
+  for (let index = 0; index < args.length; index += 1) {
+    const value = args[index]
+    if (value.startsWith("--")) {
+      if (valueFlags.includes(value)) index += 1
+      continue
+    }
+    positions.push(value)
+  }
+  return positions
+}
+
+function contractsScaffoldCommand(id: string | undefined, args: string[]): void {
+  if (!id) {
+    throw new CliCommandError("Usage: agent-toolkit contracts scaffold <id> [name] [--out path] [--force]")
+  }
+
+  const contract = listToolkitContracts(TOOLKIT_ENV).find((entry) => entry.id === id)
+  if (!contract) {
+    throw new CliCommandError(`Unknown contract: ${id}`)
+  }
+
+  const positional = collectPositionalArgs(args, ["--out"])
+  const name = positional[0]
+  const outPath = readFlagValue(args, "--out")
+  const force = args.includes("--force")
+
+  const result = scaffoldToolkitContract({
+    workspaceRoot: process.cwd(),
+    contract,
+    name,
+    outPath,
+    force,
+  })
+
+  console.log(`Scaffolded ${contract.id}`)
+  console.log(`output: ${result.outputPath}`)
+  console.log(`contract: ${contract.contractPath}`)
+  console.log(`template: ${contract.templatePath}`)
+}
+
+function contractsValidateCommand(id: string | undefined, artifactPath: string | undefined): void {
+  if (!id || !artifactPath) {
+    throw new CliCommandError("Usage: agent-toolkit contracts validate <id> <artifact-path>")
+  }
+
+  const contract = listToolkitContracts(TOOLKIT_ENV).find((entry) => entry.id === id)
+  if (!contract) {
+    throw new CliCommandError(`Unknown contract: ${id}`)
+  }
+
+  const result = validateToolkitContractArtifact(contract, resolve(process.cwd(), artifactPath))
+
+  console.log(`contract: ${result.contractId}`)
+  console.log(`artifact: ${result.artifactPath}`)
+  console.log(`status: ${result.ok ? "ok" : "invalid"}`)
+
+  if (result.issues.length === 0) {
+    console.log("issues: none")
+    return
+  }
+
+  console.log("issues:")
+  for (const issue of result.issues) {
+    console.log(`- ${issue.severity}: ${issue.message}`)
+  }
+
+  if (!result.ok) {
+    process.exit(1)
+  }
+}
+
+function contractsEmitPydanticCommand(id: string | undefined, args: string[]): void {
+  if (!id) {
+    throw new CliCommandError("Usage: agent-toolkit contracts emit-pydantic <id> [--out path] [--force]")
+  }
+
+  const contract = listToolkitContracts(TOOLKIT_ENV).find((entry) => entry.id === id)
+  if (!contract) {
+    throw new CliCommandError(`Unknown contract: ${id}`)
+  }
+
+  const outPath = readFlagValue(args, "--out")
+  const force = args.includes("--force")
+  const result = emitToolkitContractPydantic({
+    workspaceRoot: process.cwd(),
+    contract,
+    outPath,
+    force,
+  })
+
+  console.log(`Emitted Pydantic projection for ${contract.id}`)
+  console.log(`output: ${result.outputPath}`)
+  console.log(`schema: ${contract.schemaPath}`)
+}
+
 function recipesCatalogCommand(): void {
   const recipes = listToolkitRecipes(TOOLKIT_ENV)
   for (const recipe of recipes) {
-    console.log(`${recipe.id}\t${recipe.capabilityCeiling}\t${recipe.interactionPolicy}\t${recipe.description}`)
+    console.log(
+      `${recipe.id}\t${recipe.capabilityCeiling}\t${recipe.interactionPolicy}\t${recipe.contractMode}\t${recipe.description}`,
+    )
   }
 }
 
@@ -193,6 +332,8 @@ function recipesShowCommand(id: string | undefined): void {
   console.log(`description: ${recipe.description}`)
   console.log(`interactionPolicy: ${recipe.interactionPolicy}`)
   console.log(`capabilityCeiling: ${recipe.capabilityCeiling}`)
+  console.log(`contractMode: ${recipe.contractMode}`)
+  console.log(`artifactRoot: ${recipe.artifactRoot}`)
   console.log(`contracts: ${recipe.requiredContracts.join(", ") || "-"}`)
   console.log(`skills: ${recipe.suggestedSkills.join(", ") || "-"}`)
   console.log(`specialists: ${recipe.allowedSpecialists.join(", ") || "-"}`)
@@ -409,6 +550,33 @@ switch (cmd) {
     }
     console.error("Usage: agent-toolkit recipes <catalog|show> ...")
     process.exit(1)
+    break
+  }
+  case "contracts": {
+    const subcommand = process.argv[3] ?? "catalog"
+    if (subcommand === "catalog" || subcommand === "list") {
+      contractsCatalogCommand()
+      break
+    }
+    if (subcommand === "show") {
+      contractsShowCommand(process.argv[4])
+      break
+    }
+    if (subcommand === "scaffold") {
+      contractsScaffoldCommand(process.argv[4], process.argv.slice(5))
+      break
+    }
+    if (subcommand === "validate") {
+      contractsValidateCommand(process.argv[4], process.argv[5])
+      break
+    }
+    if (subcommand === "emit-pydantic") {
+      contractsEmitPydanticCommand(process.argv[4], process.argv.slice(5))
+      break
+    }
+    console.error("Usage: agent-toolkit contracts <catalog|show|scaffold|validate|emit-pydantic> ...")
+    process.exit(1)
+    break
   }
   case "report":
     reportCommand(process.argv[3], process.argv.slice(4))
@@ -428,6 +596,14 @@ Commands:
   status [dir]         Show toolkit package and pack status
   runtime <command>    Run the optional runtime/enforcement layer (preferred entrypoint)
   tools catalog        List pack/catalog entries
+  contracts catalog    List first-class toolkit contracts
+  contracts show <id>  Show contract metadata and source
+  contracts scaffold <id> [name] [--out path] [--force]
+                      Create a durable Markdown artifact from a contract template
+  contracts validate <id> <artifact-path>
+                      Validate a Markdown artifact against required contract sections
+  contracts emit-pydantic <id> [--out path] [--force]
+                      Generate an optional Python/Pydantic projection from schema.json
   recipes catalog      List first-class toolkit recipes
   recipes show <id>    Show recipe metadata and source
   tools install        Install one adapter target directly (project/local by default)

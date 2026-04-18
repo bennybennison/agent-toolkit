@@ -20,7 +20,10 @@ Produce a `BugDiagnosis` artifact that records:
 - next fix direction
 - verification plan
 
-Use the template in `templates/workflows/BUG_DIAGNOSIS.md` when creating the artifact.
+Use the toolkit diagnosis contract when creating the artifact:
+
+- contract definition: `contracts/diagnosis-note/CONTRACT.md`
+- writing scaffold: `contracts/diagnosis-note/TEMPLATE.md`
 
 ## Process
 

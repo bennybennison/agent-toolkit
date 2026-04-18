@@ -7,6 +7,7 @@ import { loadCompletedHandoffs, loadSessionStateFile, saveSessionStateFile } fro
 import { getMissionPipeline, startMission } from "../lib/orchestrator/mission-state"
 import { getMutationGateDecision } from "../lib/orchestrator/mode-policy"
 import { ensureBranchIsolationForMission } from "../lib/orchestrator/branch-isolation"
+import { getRuntimeRecipeMetadata } from "../lib/orchestrator/recipe-metadata"
 import { getDefaultInteractionPolicyForRecipe, selectRecipeForCommand } from "../lib/orchestrator/recipe-routing"
 
 /**
@@ -37,6 +38,7 @@ export const CommandDispatcherPlugin: Plugin = async () => {
         const missionPrefix = command === "loop" ? "loop" : command
         const missionId = `${missionPrefix}-${Date.now()}`
         const recipeId = selectRecipeForCommand(command, goal)
+        const recipeMeta = getRuntimeRecipeMetadata(recipeId)
 
         const brief: TaskBrief = {
           missionId,
@@ -48,6 +50,9 @@ export const CommandDispatcherPlugin: Plugin = async () => {
           capabilityCeiling: "mutate",
           interactionPolicy: getDefaultInteractionPolicyForCommand(command, recipeId),
           recipeId,
+          contractMode: recipeMeta.contractMode,
+          artifactRoot: recipeMeta.artifactRoot,
+          requiredContracts: recipeMeta.requiredContracts,
           crThreshold: style === "autonomous" ? 0.75 : 0.72,
         }
 
@@ -76,6 +81,8 @@ export const CommandDispatcherPlugin: Plugin = async () => {
             `Command dispatcher: initialized specialist pipeline for /${command} (${style}). ` +
               `Recipe: ${recipeId}. ` +
               `Interaction policy: ${brief.interactionPolicy}. ` +
+              `Contracts: ${brief.requiredContracts?.join(", ") || "none"} (${brief.contractMode ?? "advisory"}). ` +
+              `Artifact root: ${brief.artifactRoot ?? ".agent-artifacts/"}. ` +
               `Mission ${result.missionId}. ` +
               `Pipeline: ${result.pipeline.specialists.join(" -> ")}. ` +
               `Active stage: ${result.pipeline.activeStage ?? "none"}.`,

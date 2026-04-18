@@ -34,6 +34,11 @@ Break the objective into ordered steps with:
 
 ### Phase 3: Draft the Blueprint
 
+Use the `plan` contract as the durable structure:
+
+- contract definition: `contracts/plan/CONTRACT.md`
+- writing scaffold: `contracts/plan/TEMPLATE.md`
+
 Create a blueprint document with cold-start briefs:
 
 ```markdown

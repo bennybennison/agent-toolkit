@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DecisionNote",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["title", "currentRequest", "decision", "rationale", "nextAction"],
+  "properties": {
+    "title": { "type": "string" },
+    "currentRequest": { "type": "string" },
+    "decision": { "type": "string" },
+    "rationale": { "type": "string" },
+    "nextAction": { "type": "string" }
+  }
+}

@@ -1,4 +1,5 @@
 import type { CapabilityCeiling } from "../orchestrator/capability-ceiling"
+import type { ContractMode } from "../../../lib/tooling/contracts"
 
 export type CommanderMode = "ghost" | "scout" | "autocrat" | "guardian" | "interviewer"
 export type InteractionPolicy = "confirm-first" | "checkpointed" | "mutate-only" | "final-only"
@@ -36,6 +37,12 @@ export type TaskBrief = {
   interactionPolicy?: InteractionPolicy
   /** Explicit orchestration recipe chosen for the current task. */
   recipeId?: RuntimeRecipeId
+  /** How strongly the selected recipe depends on contract-backed artifacts. */
+  contractMode?: ContractMode
+  /** Default repo-relative output root for durable recipe artifacts. */
+  artifactRoot?: string
+  /** Canonical contract ids expected by the selected recipe. */
+  requiredContracts?: string[]
   strategy?:
     | "outside-in"
     | "ui-first"

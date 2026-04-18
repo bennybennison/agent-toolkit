@@ -17,6 +17,17 @@ skills/
     SKILL.md
 ```
 
+Skills may also include nested support files when that improves clarity:
+
+```text
+skills/
+  <skill-name>/
+    SKILL.md
+    references/
+    templates/
+    examples/
+```
+
 `SKILL.md` should include frontmatter with at least:
 
 - `name`
@@ -31,6 +42,27 @@ Toolkit-only metadata may also be present:
 
 Toolkit metadata is stripped from the installed `.agents/skills/.../SKILL.md` surface. The installed skill keeps a clean portable skill contract.
 
+## Support Files
+
+Nested support files are allowed when they are clearly part of the same skill.
+
+Use them for:
+
+- domain-specific reference material
+- deeper examples
+- support templates
+- related details that would make `SKILL.md` too long or too noisy
+
+Rules:
+
+- `SKILL.md` remains the clear and discoverable entrypoint
+- `SKILL.md` should point to any nested files that matter and explain when to
+  open them
+- nested files support the parent skill; they do not replace it
+- if a concept should be independently discoverable across multiple domains, it
+  should usually be its own skill rather than a buried support file
+- keep related material grouped, but do not hide broadly reusable capabilities
+
 ## Relationship To Packs
 
 Packs remain the composition and selection layer.
@@ -42,3 +74,7 @@ That means:
 - adapters project the selected toolkit resources into host-native surfaces
 
 During migration, some older skill content may still exist in `packs/skills-*/` or adapter templates. Shared skill installs now prefer this directory first and only fall back to those older sources when a migrated authored skill does not exist here yet.
+
+Some skills may point to first-class toolkit contracts under `contracts/` and
+to durable artifact conventions such as `.agent-artifacts/`. Skills teach usage
+and routing; they do not become the canonical owner of contract definitions.

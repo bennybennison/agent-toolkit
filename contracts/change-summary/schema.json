@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ChangeSummary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["title", "scope", "mainChanges", "impact"],
+  "properties": {
+    "title": { "type": "string" },
+    "scope": { "type": "string" },
+    "mainChanges": { "type": "array", "items": { "type": "string" } },
+    "impact": { "type": "array", "items": { "type": "string" } },
+    "remainingGaps": { "type": "array", "items": { "type": "string" } }
+  }
+}

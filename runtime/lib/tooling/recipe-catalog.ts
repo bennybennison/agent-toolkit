@@ -2,7 +2,7 @@ import { existsSync, readdirSync, readFileSync } from "node:fs"
 import { join } from "node:path"
 
 import { type ToolkitEnvironment } from "../toolkit-environment"
-import { type CapabilityCeiling, type InteractionPolicy, type RecipeCatalogEntry } from "./contracts"
+import { type CapabilityCeiling, type ContractMode, type InteractionPolicy, type RecipeCatalogEntry } from "./contracts"
 
 function parseFrontmatter(filePath: string): Record<string, string> {
   const raw = readFileSync(filePath, "utf8")
@@ -51,6 +51,14 @@ function parseCapabilityCeiling(value: string | undefined): CapabilityCeiling {
   return "read"
 }
 
+function parseContractMode(value: string | undefined): ContractMode {
+  const normalized = normalizeScalar(value)
+  if (normalized === "required" || normalized === "validated") {
+    return normalized
+  }
+  return "advisory"
+}
+
 export function listToolkitRecipes(env: ToolkitEnvironment): RecipeCatalogEntry[] {
   const recipesDir = join(env.toolkitRoot, "recipes")
   if (!existsSync(recipesDir)) return []
@@ -69,6 +77,8 @@ export function listToolkitRecipes(env: ToolkitEnvironment): RecipeCatalogEntry[
       sourcePath,
       interactionPolicy: parseInteractionPolicy(frontmatter.interaction_policy),
       capabilityCeiling: parseCapabilityCeiling(frontmatter.capability_ceiling),
+      contractMode: parseContractMode(frontmatter.contract_mode),
+      artifactRoot: normalizeScalar(frontmatter.artifact_root) ?? ".agent-artifacts/",
       requiredContracts: parseList(frontmatter.contracts),
       suggestedSkills: parseList(frontmatter.skills),
       allowedSpecialists: parseList(frontmatter.specialists),

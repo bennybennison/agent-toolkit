@@ -10,6 +10,7 @@
     ".": "./index.ts",
     "./package.json": "./package.json",
     "./adapters/*": "./adapters/*",
+    "./contracts/*": "./contracts/*",
     "./content/*": "./content/*",
     "./packs/*": "./packs/*",
     "./runtime/*": "./runtime/*",
@@ -24,10 +25,12 @@
     "index.ts",
     "bin/",
     "adapters/",
+    "contracts/",
     "content/",
     "packs/",
     "runtime/",
     "scripts/",
+    "skills/",
     "templates/"
   ]
 }

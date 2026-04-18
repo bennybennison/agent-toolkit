@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NextStepBrief",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["title", "nextAction", "whyItIsNext", "readFirst", "doneLooksLike"],
+  "properties": {
+    "title": { "type": "string" },
+    "nextAction": { "type": "string" },
+    "whyItIsNext": { "type": "string" },
+    "readFirst": { "type": "array", "items": { "type": "string" } },
+    "doneLooksLike": { "type": "string" }
+  }
+}

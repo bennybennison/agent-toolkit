@@ -2,9 +2,11 @@
 description: Turn a rough request into a concrete implementation plan with explicit outputs and handoff context.
 interaction_policy: confirm-first
 capability_ceiling: read
-contracts: Plan, ContextBundle
+contract_mode: validated
+artifact_root: .agent-artifacts/plans/
+contracts: task-brief, plan, context-bundle
 skills: using-agent-toolkit, blueprint, review-specs
-specialists: mapper, researcher, architect
+specialists: contractor, mapper, researcher, architect
 ---
 
 # Plan From Idea

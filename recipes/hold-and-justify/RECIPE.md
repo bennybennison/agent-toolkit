@@ -2,7 +2,9 @@
 description: Decide that no immediate action is warranted, then explain why and what should happen next.
 interaction_policy: confirm-first
 capability_ceiling: read
-contracts: DecisionNote, ContextBundle
+contract_mode: advisory
+artifact_root: .agent-artifacts/decisions/
+contracts: decision-note, context-bundle
 skills: using-agent-toolkit, progressive-disclosure
 specialists: researcher
 ---

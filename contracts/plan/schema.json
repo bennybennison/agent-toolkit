@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "title",
+    "summary",
+    "strategySelection",
+    "affectedAreas",
+    "milestones",
+    "risks",
+    "verificationStrategy"
+  ],
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "goal",
+        "workstream",
+        "primaryStrategy"
+      ],
+      "properties": {
+        "goal": { "type": "string" },
+        "workstream": { "type": "string" },
+        "primaryStrategy": { "type": "string" }
+      }
+    },
+    "strategySelection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "chosenStrategy",
+        "whyItFits",
+        "alternativesConsidered"
+      ],
+      "properties": {
+        "chosenStrategy": { "type": "string" },
+        "whyItFits": { "type": "string" },
+        "alternativesConsidered": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "affectedAreas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "area",
+          "likelyFilesOrModules"
+        ],
+        "properties": {
+          "area": { "type": "string" },
+          "likelyFilesOrModules": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "milestones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "goal",
+          "dependsOn",
+          "verification"
+        ],
+        "properties": {
+          "goal": { "type": "string" },
+          "dependsOn": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "verification": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "risk",
+          "mitigation"
+        ],
+        "properties": {
+          "risk": { "type": "string" },
+          "mitigation": { "type": "string" }
+        }
+      }
+    },
+    "verificationStrategy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primaryChecks",
+        "evidenceExpected"
+      ],
+      "properties": {
+        "primaryChecks": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "evidenceExpected": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

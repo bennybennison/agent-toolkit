@@ -1,0 +1,16 @@
+from pydantic import BaseModel, Field
+
+
+class {{ model_name }}(BaseModel):
+    """
+    Optional Python projection for the `{{ contract_id }}` toolkit contract.
+
+    Canonical ownership remains in:
+    - contracts/{{ contract_id }}/CONTRACT.md
+    - contracts/{{ contract_id }}/schema.json
+    - contracts/{{ contract_id }}/TEMPLATE.md
+    """
+
+    # Add projected fields derived from the canonical contract schema.
+    # Keep this model removable and adapter-specific.
+    title: str = Field(description="Example projected field")

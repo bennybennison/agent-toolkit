@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DiagnosisNote",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "title",
+    "symptoms",
+    "reproductionStatus",
+    "affectedArea",
+    "evidence",
+    "likelyCauses",
+    "nextFixDirection",
+    "verificationPlan"
+  ],
+  "properties": {
+    "title": { "type": "string" },
+    "symptoms": { "type": "array", "items": { "type": "string" } },
+    "reproductionStatus": { "type": "string" },
+    "affectedArea": { "type": "array", "items": { "type": "string" } },
+    "evidence": { "type": "array", "items": { "type": "string" } },
+    "likelyCauses": { "type": "array", "items": { "type": "string" } },
+    "nextFixDirection": { "type": "string" },
+    "verificationPlan": { "type": "array", "items": { "type": "string" } }
+  }
+}

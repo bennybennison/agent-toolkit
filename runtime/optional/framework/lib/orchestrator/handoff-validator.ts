@@ -1,8 +1,8 @@
 import type {
   AuditReport,
   BuildProposal,
-  DebriefBundle,
   HandoffObjectType,
+  DebriefBundle,
   InteractionPolicy,
   MapReport,
   TaskBrief,
@@ -48,6 +48,10 @@ function isValidInteractionPolicy(value: unknown): value is InteractionPolicy {
   return ["confirm-first", "checkpointed", "mutate-only", "final-only"].includes(String(value))
 }
 
+function isValidContractMode(value: unknown): boolean {
+  return ["advisory", "required", "validated"].includes(String(value))
+}
+
 export function validateTaskBrief(payload: unknown): ValidationResult {
   const errors: string[] = []
   const p = payload as Partial<TaskBrief>
@@ -75,6 +79,15 @@ export function validateTaskBrief(payload: unknown): ValidationResult {
   }
   if (p.interactionPolicy !== undefined && !isValidInteractionPolicy(p.interactionPolicy)) {
     errors.push("interactionPolicy must be confirm-first, checkpointed, mutate-only, or final-only when provided")
+  }
+  if (p.contractMode !== undefined && !isValidContractMode(p.contractMode)) {
+    errors.push("contractMode must be advisory, required, or validated when provided")
+  }
+  if (p.artifactRoot !== undefined && (typeof p.artifactRoot !== "string" || !p.artifactRoot)) {
+    errors.push("artifactRoot must be a non-empty string when provided")
+  }
+  if (p.requiredContracts !== undefined && !isStringArray(p.requiredContracts)) {
+    errors.push("requiredContracts must be string[] when provided")
   }
   if (p.strategy !== undefined && !isValidStrategy(p.strategy)) {
     errors.push("strategy must be a valid strategy when provided")

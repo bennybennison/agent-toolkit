@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WireframePlan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["title", "workflowSlice", "targetScreens", "statesAndTransitions", "visibleDataNeeds", "validationPlan"],
+  "properties": {
+    "title": { "type": "string" },
+    "workflowSlice": { "type": "string" },
+    "targetScreens": { "type": "array", "items": { "type": "string" } },
+    "statesAndTransitions": { "type": "array", "items": { "type": "string" } },
+    "visibleDataNeeds": { "type": "array", "items": { "type": "string" } },
+    "validationPlan": { "type": "array", "items": { "type": "string" } }
+  }
+}

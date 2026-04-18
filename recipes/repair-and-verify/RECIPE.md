@@ -2,9 +2,11 @@
 description: Diagnose a defect, repair it, and verify the fix without turning the task into a broad redesign.
 interaction_policy: mutate-only
 capability_ceiling: mutate
-contracts: DiagnosisNote, VerificationReport
+contract_mode: validated
+artifact_root: .agent-artifacts/verification/
+contracts: diagnosis-note, verification-report
 skills: using-agent-toolkit, bug-diagnosis, verification-loop
-specialists: researcher, build-fixer, builder, verifier, tdd-runner
+specialists: contractor, researcher, build-fixer, builder, verifier, tdd-runner
 ---
 
 # Repair And Verify

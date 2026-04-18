@@ -2,9 +2,11 @@
 description: Build or refresh a project map, identify the relevant system boundaries, and assess likely change impact.
 interaction_policy: confirm-first
 capability_ceiling: read
-contracts: MapReport, ContextBundle
+contract_mode: required
+artifact_root: .agent-artifacts/context-bundles/
+contracts: map-report, context-bundle
 skills: using-agent-toolkit, repo-mapping, implementation-strategy-selection
-specialists: mapper, researcher, architect
+specialists: contractor, mapper, researcher, architect
 ---
 
 # Map And Assess
